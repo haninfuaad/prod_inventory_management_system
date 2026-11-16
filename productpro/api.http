@@ -1,0 +1,114 @@
+# user create
+
+###
+POST http://127.0.0.1:8000/user
+Content-Type: application/json
+
+{
+    "username":"hanin",
+    "email":"hanin@gmail.com",
+    "password":"hanin"
+}
+
+# token creation
+###
+POST http://127.0.0.1:8000/token
+Content-Type: application/json
+
+{
+    "username":"hanin",
+    "password":"hanin"
+}
+
+
+###
+@token=6bfc9fd40b595d53c932f4e3aa417b0e6155dbd9
+
+
+
+# create inventory and list    
+
+
+# add new product
+
+###
+POST http://127.0.0.1:8000/inventory
+Content-Type: application/json
+Authorization: Token {{token}}
+
+{
+    "name":"beeter",
+    "description":"cooking",
+    "category":"kitchen appliences",
+    "price":"2000",
+    "stock":"80"
+}
+
+# retieve all product
+###
+GET http://127.0.0.1:8000/inventory
+Content-Type: application/json
+Authorization: Token {{token}}
+
+
+
+# update retrieve delete
+
+
+#retrieve a product with id
+
+
+###
+GET http://127.0.0.1:8000/inventory/1
+Content-Type: application/json
+Authorization: Token {{token}}
+
+
+
+#update product
+
+
+###
+PUT  http://127.0.0.1:8000/inventory/2
+Content-Type: application/json
+Authorization: Token {{token}}
+
+{
+    "name":"pan",
+    "description":"cooking",
+    "category":"kitchen appliences",
+    "price":"3000",
+    "stock":"10"
+}
+
+
+#delete a product
+
+###
+DELETE  http://127.0.0.1:8000/inventory/1
+Content-Type: application/json
+Authorization: Token {{token}}
+
+
+
+# retrive all product with stock less than 10
+
+###
+GET http://127.0.0.1:8000/inventory?stock=<10
+Content-Type: application/json
+Authorization: Token {{token}}
+
+
+
+#search product by name
+
+###
+GET http://127.0.0.1:8000/inventory?search=pan
+Content-Type: application/json
+Authorization: Token {{token}}
+
+
+###
+GET http://127.0.0.1:8000/inventory?search=beeter
+Content-Type: application/json
+Authorization: Token {{token}}
